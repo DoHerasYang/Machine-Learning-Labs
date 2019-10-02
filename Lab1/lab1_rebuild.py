@@ -147,11 +147,43 @@ prob_ayis = np.array(prob_list)
 plt.plot(year_axis,prob_ayis, 'rx')
 plt.savefig('./everyyear.png')
 
+# Rules of Probability
+# The scatter plot of deaths vs year that we created above can be seen as a joint probability distribution
+# We represent a joint probability using the notation.
+# Question: What's the probability that the number of deaths was over 40 and the year was 2002?
 #
 
+temp_year = 2000
+deaths = (film_deaths.Body_Count[film_deaths.Year == temp_year] > 40).sum()
+total_films = film_deaths.Body_Count.count()
+prob_death = float(deaths) / float(total_films)
+print("Probability of deaths being greather than 40 and year being", temp_year, "is:", prob_death)
 
 
+# The Product Rule
+# for p(Y = y, T = t) = p(Y = y|T=t)p(T = t)
+# we set the t=2000
+# film_deaths.Body_Count.count() -> The total number of sample
+# film_deaths.Year == 2002).sum()-> The total number of sample im 2002
+# film_deaths.Body_Count[film_deaths.Year == 2002] > 40).sum() -> The number of Body_Count is larger than the 40
 
+p_t = float((film_deaths.Year == 2002).sum()) / float(film_deaths.Body_Count.count())  # sum() to calculate the number of the movies which have the same year
+p_y_given_t = float((film_deaths.Body_Count[film_deaths.Year == 2002] > 40).sum()) / float((film_deaths.Year == 2002).sum())
+p_y_and_t = float((film_deaths.Body_Count[film_deaths.Year == 2002] > 40).sum()) / float(film_deaths.Body_Count.count())
+print("P(t) is", p_t)
+print("P(y|t) is", p_y_given_t)
+print("P(y,t) is", p_y_and_t)
 
+# The Sum Rule
+# TODO: Now, please add all the p(y,t) to get the result of P(Y = y)
+#
+year_range = film_deaths.drop_duplicates('Year').sort_values('Year', ascending = True)  # reuse the range of year
+p_y = float(0)  # set the initial value of p_y, attention: we need the float value.
+for year in year_range.Year:
+    p_t = float((film_deaths.Year == year).sum()) / float(film_deaths.Body_Count.count())  # sum() to calculate the number of the movies which have the same year
+    p_y_given_t = float((film_deaths.Body_Count[film_deaths.Year == year] > 40).sum()) / float((film_deaths.Year == 2002).sum())
+    p_y_and_t = float((film_deaths.Body_Count[film_deaths.Year == year] > 40).sum()) / float(film_deaths.Body_Count.count())
+    p_y = float(p_y + p_y_and_t)
+print("P(y):", p_y)
 
 
