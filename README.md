@@ -4,14 +4,18 @@
 
 **Machine Learning and Adaptive Intelligence's Lab Notebook** 
 =========================
-[![Version Status](https://img.shields.io/badge/Build-passing-green)](). [![Version Status](https://img.shields.io/badge/Python-3.7-yellow)](). 
+[![Version Status](https://img.shields.io/badge/Build-passing-green)]() [![Version Status](https://img.shields.io/badge/Python-3.7-yellow)]()
 
 Menu:
 =========================
-[TOC]
+
+   * [Description](#description)
+   * [Configure Python Compiling Environment](#configure-python-compiling-environment)
+    * [How to set the correct Python environment in Anaconda3](#how-to-set-the-correct-python-environment-in-anaconda3)
+    * [How to set the correct Python environment in Pycharm by relying on the Anaconda Environment](#how-to-set-the-correct-python-environment-in-pycharm-by-relying-on-the-anaconda-environment)
 
 
-Description:
+Description
 =========================
 - This repository concludes the Ideas and Thoughts on the core knowledge of **Machine Learning and Adaptive Intelligence** which is based on the relative core class in University of Sheffield and self-study notes.
 - For the course and reference‘s details, readers can find the **NOT ONLY** the knowledge of machine learning and adaptive intelligence **BUT ALSO** the way of building the correlative python program by famous libraries such as `Numpy`,`pandas`, mat.
