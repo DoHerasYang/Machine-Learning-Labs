@@ -3,6 +3,7 @@ import zipfile
 import sys
 import pandas as pd
 import numpy as np
+import matplotlib.pylab as plt
 
 '''
 @Copyright Knowledge and dataset
@@ -94,7 +95,159 @@ Y = pd.DataFrame({'users': p_list_users, 'movies': p_list_movies, 'ratingsorig':
 # pd.set_option('display.max_rows', None)
 # pd.set_option('max_colwidth',100)
 
+# Steepest Descent Algorithm
+# To start with though, we need initial values for the matrix  𝐔  and the matrix  𝐕 . Let's create them as pandas data
+# frames and initialise them randomly with small values.
 #
+#
+q = 2  #
+learn_rate = 0.01
+U = pd.DataFrame(np.random.normal(size=(nUsersInExample, q))*0.001, index=my_batch_users)
+V = pd.DataFrame(np.random.normal(size=(n_movies, q))*0.001, index=indexes_unique_movies)
+
+# now we set the objective function and finish the gradient function
+def objective_gradient(Y, U, V):
+    gU = pd.DataFrame(np.zeros((U.shape)), index=U.index)
+    gV = pd.DataFrame(np.zeros((V.shape)), index=V.index)
+    obj = 0.
+    nrows = Y.shape[0]
+    for i in range(nrows): # circulate the read and store function
+        row = Y.iloc[i]    # read and store all the information
+        user = row['users']
+        film = row['movies']
+        rating = row['ratings']
+        prediction = np.dot(U.loc[user], V.loc[film]) # vTu for inner product the dot calculate the corresponding multiply result
+        diff = prediction - rating # vTu - y
+        obj += diff*diff
+        gU.loc[user] += 2*diff*V.loc[film]   # corresponding gradient result
+        gV.loc[film] += 2*diff*U.loc[user]
+    return obj, gU, gV
+iterations = 20
+for i in range(iterations):
+    obj, gU, gV = objective_gradient(Y, U, V)
+    print("Iteration", i+1 , "Objective function: ", obj)
+    U -= learn_rate*gU   # update the result when you finish a gradient you have to update ot once
+    V -= learn_rate*gV
+
+# TODO: Create a function that provides the prediction of the ratings for the users in the dataset. Is the quality of
+#  the predictions affected by the number of iterations or the learning rate? The function should receive Y, U and V
+#  and return the predictions and the absolute error between the predictions and the actual rating given by the users.
+#  The predictions and the absolute error should be added as additional columns to the dataframe Y.
+
+def prediction(Y, U, V):
+    # You have to initial the Y into the new data framework and add two new rows and
+    predict_value = pd.DataFrame(index=Y.index, columns=['prediction_value'])
+    absolute_error = pd.DataFrame(index=Y.index, columns=['absolute_error'])
+    for i in range(Y.index):
+        each_row = Y.iloc[i]
+        user = each_row['users']
+        movie = each_row['movies']
+        rating = each_row['ratings']
+        # use the inner product to estimate the rating. Because you have updated the value which is from the
+        predict_value[i] = np.dot(U.loc['users'],V.loc['movie'])
+        absolute_error = abs(predict_value[i] - ratings)
+    return predict_value, absolute_error
+
+predict_value, absolute_error = prediction(Y, U, V)
+Y['prediction'] = predict_value
+Y['absolute error'] = absolute_error
+
+# TODO: Stochastic gradient descent involves updating separating each gradient update according to each separate
+#   observation, rather than summing over them all. It is an approximate optimization method, but it has proven
+#   convergenceunder certain conditions and can be much faster in practice. It is used widely by internet companies
+#   for doing machine learning in practice. For example, Facebook's ad ranking algorithm uses stochastic gradient
+#   descent.
+'''
+Create a stochastic gradient descent version of the algorithm. Monitor the objective function after every 1000 updates 
+to ensure that it is decreasing. When you have finished, plot the movie map and the user map in two dimensions (you can 
+use the columns of the matrices  𝐔  for the user map and the columns of  𝐕  for the movie map). Provide three 
+observations about these maps.
+'''
+# calculate the obj function (first you should make your prediction function and initial it when )
+def create_obj(Y,U,V)
+    obj = 0.0
+    num_inter = Y.shape[0]
+    for i in num_inter:
+        each_row = Y.iloc[i]
+        user = each_row['users']
+        movie = each_row['movies']
+        rating = each_row['ratings']
+        prediction = np.dot(U.loc['users'], V.loc['movies'])  # to calculate the
+        diff = prediction - rating
+        obj = diff * diff
+    return obj
+
+# the gradient function to use the rating and u, v to gradient
+# we just indicate the function of gradient.
+def obj_gradient(rating, u, v):
+    prediction_value = np.dot(u,v)
+    diff = prediction_value - rating
+    gU = 2*diff*v
+    gV = 2*diff*u
+    return gU,gV
+
+def check_converge(new_obj, pre_obj):
+
+    if pre_obj == None or new_obj < pre_obj:
+        return False
+    elif new_obj > pre_obj:
+        return True
+
+
+def map_function(Y, U, V, learn_rate = 0.001, period_iteration = 1000, loop_time = 100):
+    index_interation = 0
+    obj_func = None
+    converge_label = False
+# create list to storage the obj and iteration process
+    obj_value = []
+    loopnum_update = []
+    currentlabel = 0
+
+    index_list = Y.index.values
+    for i in range(loop_time):
+        # start to iteration
+        np.random.shuffle(index_list)
+        # converge_label is to check if the gradient is convergence
+        if converge_label:
+            break
+        # now we start the gradient 1000 times and shuffle the vector to update the inner product value
+        #  we set the number of update each row of value is 1000 times, when update the random the matrix we check if the
+        # gradient function is becoming the convergence. if not ,we continue the gradient process
+        for j in index_list:
+            row = Y.iloc[j]
+            user = row['users']
+            movie = row['movies']
+            rating = row['ratings']
+            gU, gV = obj_gradient(rating, U.loc[user], V.loc[movie])
+            U.loc[user] -= learn_rate*gU
+            V.loc[movie] -= learn_rate * gV
+            index_interation += 1
+            # if finish the each the 1000
+            if index_interation % period_iteration == 0:
+                # generate the new 
+                obj_newvalue = create_obj(Y, U, V)
+                loopnum_update.append(index_interation)
+                obj_value.append(obj_newvalue)
+                print("After the %n times iteration, the value of objective function is %0.8f",(index_interation, obj_newvalue))
+                label = check_converge(obj_newvalue, obj_value[currentlabel])
+                if label :
+                    break
+                else:
+                    currentlabel += 1
+        plt.plot(loopnum_update, obj_value, 'b-.')
+        plt.title('Objectives over updates')
+        plt.save('./objective_gradient.png')
+# we start all three function to
+q = 2
+U = pd.DataFrame(np.random.normal(size=(nUsersInExample, q)) * 0.001, index=my_batch_users)
+V = pd.DataFrame(np.random.normal(size=(n_movies, q)) * 0.001, index=indexes_unique_movies)
+
+U, V = map_function(Y, U, V)
+
+
+
+
+
 
 
 
