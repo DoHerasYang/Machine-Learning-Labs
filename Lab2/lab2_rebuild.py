@@ -224,7 +224,7 @@ def map_function(Y, U, V, learn_rate = 0.001, period_iteration = 1000, loop_time
             index_interation += 1
             # if finish the each the 1000
             if index_interation % period_iteration == 0:
-                # generate the new 
+                # generate the new obj_function value
                 obj_newvalue = create_obj(Y, U, V)
                 loopnum_update.append(index_interation)
                 obj_value.append(obj_newvalue)
@@ -237,12 +237,49 @@ def map_function(Y, U, V, learn_rate = 0.001, period_iteration = 1000, loop_time
         plt.plot(loopnum_update, obj_value, 'b-.')
         plt.title('Objectives over updates')
         plt.save('./objective_gradient.png')
+        return U,V     # update the value
+
+def map_vector(U,V):
+    plt.plot(U[0],U[1],'bx')
+    plt.title('Users Map')
+    plt.save('./usermap.png')
+
+    plt.plot(V[0], V[1], 'bx')
+    plt.title('Movie Map')
+    plt.save('./moviemap.png')
+
 # we start all three function to
 q = 2
 U = pd.DataFrame(np.random.normal(size=(nUsersInExample, q)) * 0.001, index=my_batch_users)
 V = pd.DataFrame(np.random.normal(size=(n_movies, q)) * 0.001, index=indexes_unique_movies)
 
-U, V = map_function(Y, U, V)
+U,V = map_function(Y, U, V)
+map_vector(U,V)
+
+
+
+# TODO: Use stochastic gradient descent to make a movie map for the MovieLens 100k data. Plot the map of the movies
+#  when you are finished.
+
+# use the panda to store the new data for stochastic gradient
+ratings = pd.read_csv('./ml-latest-small/ratings.csv')
+Y_all = pd.DataFrame({'users': ratings['userId'], 'movies': ratings['movieId'], 'ratingsorig': ratings['rating']})
+# set a new value for ratings and calculate the Mean Deviation
+Y_all['rating'] = Y_all['ratingsorig'] - np.mean(Y_all['ratingsorig'])
+# select all the distinctive users
+user_dis = Y_all['users'].unique()
+num_user = user_dis.shape[0]
+movie_dis = Y_all['movies'].unique()
+num_movie = movie_dis.shape[0]
+
+q = 2
+U = pd.DataFrame(np.random.normal(size=(n_users, q))*0.001, index=indexes_unique_users)
+V = pd.DataFrame(np.random.normal(size=(n_movies, q))*0.001, index=indexes_unique_movies)
+
+U, V = map_function(Y_all, U, V)
+
+
+
 
 
 
