@@ -133,24 +133,23 @@ for i in range(iterations):
 #  the predictions affected by the number of iterations or the learning rate? The function should receive Y, U and V
 #  and return the predictions and the absolute error between the predictions and the actual rating given by the users.
 #  The predictions and the absolute error should be added as additional columns to the dataframe Y.
-
 def prediction(Y, U, V):
-    # You have to initial the Y into the new data framework and add two new rows and
-    predict_value = pd.DataFrame(index=Y.index, columns=['prediction_value'])
-    absolute_error = pd.DataFrame(index=Y.index, columns=['absolute_error'])
-    for i in range(Y.index):
-        each_row = Y.iloc[i]
-        user = each_row['users']
-        movie = each_row['movies']
-        rating = each_row['ratings']
-        # use the inner product to estimate the rating. Because you have updated the value which is from the
-        predict_value[i] = np.dot(U.loc['users'],V.loc['movie'])
-        absolute_error = abs(predict_value[i] - ratings)
-    return predict_value, absolute_error
+    pred_df = pd.DataFrame(index=Y.index, columns=['prediction'])
+    abs_error_df = pd.DataFrame(index=Y.index, columns=['absolute error'])
+    for i in Y.index:
+        row = Y.iloc[i]
+        user = row['users']
+        film = row['movies']
+        rating = row['ratings']
+        pred_df.loc[i] = np.dot(U.loc[user], V.loc[film])  # vTu
+        abs_error_df.loc[i] = abs(pred_df.iloc[i, 0] - rating)
 
-predict_value, absolute_error = prediction(Y, U, V)
-Y['prediction'] = predict_value
-Y['absolute error'] = absolute_error
+    return pred_df, abs_error_df
+
+
+pred_df, abs_error_df = prediction(Y, U, V)
+Y['prediction'] = pred_df
+Y['absolute error'] = abs_error_df
 
 # TODO: Stochastic gradient descent involves updating separating each gradient update according to each separate
 #   observation, rather than summing over them all. It is an approximate optimization method, but it has proven
@@ -164,15 +163,15 @@ use the columns of the matrices  𝐔  for the user map and the columns of  𝐕
 observations about these maps.
 '''
 # calculate the obj function (first you should make your prediction function and initial it when )
-def create_obj(Y,U,V)
+def create_obj(Y,U,V):
     obj = 0.0
     num_inter = Y.shape[0]
-    for i in num_inter:
+    for i in range(num_inter):
         each_row = Y.iloc[i]
         user = each_row['users']
         movie = each_row['movies']
         rating = each_row['ratings']
-        prediction = np.dot(U.loc['users'], V.loc['movies'])  # to calculate the
+        prediction = np.dot(U.loc[user], V.loc[movie])  # to calculate the
         diff = prediction - rating
         obj = diff * diff
     return obj
