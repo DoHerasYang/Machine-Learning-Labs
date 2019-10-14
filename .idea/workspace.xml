@@ -17,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Lab2/lab2_rebuild.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1724">
-              <caret line="174" column="34" lean-forward="true" selection-start-line="174" selection-start-column="34" selection-end-line="174" selection-end-column="34" />
+            <state relative-caret-position="334">
+              <caret line="272" lean-forward="true" selection-start-line="272" selection-end-line="272" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -65,6 +65,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -86,7 +87,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -183,17 +183,19 @@
       <workItem from="1570742419787" duration="2644000" />
       <workItem from="1570798682335" duration="6092000" />
       <workItem from="1570979379560" duration="1268000" />
+      <workItem from="1570998839982" duration="1841000" />
+      <workItem from="1571000937176" duration="278000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23742000" />
+    <option name="totallyTimeSpent" value="25861000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16117217" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16483517" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -222,7 +224,7 @@
     <option name="version" value="1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Machine_Learning_Labs$lab.coverage" NAME="lab Coverage Results" MODIFIED="1570980736174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lab2" />
+    <SUITE FILE_PATH="coverage/Machine_Learning_Labs$lab.coverage" NAME="lab Coverage Results" MODIFIED="1571000980010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lab2" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/anaconda3/envs/lab/lib/python3.7/site-packages/numpy/random/__init__.py">
@@ -239,8 +241,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Lab2/lab2_rebuild.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1724">
-          <caret line="174" column="34" lean-forward="true" selection-start-line="174" selection-start-column="34" selection-end-line="174" selection-end-column="34" />
+        <state relative-caret-position="334">
+          <caret line="272" lean-forward="true" selection-start-line="272" selection-end-line="272" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

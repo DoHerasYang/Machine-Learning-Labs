@@ -173,7 +173,7 @@ def create_obj(Y,U,V):
         rating = each_row['ratings']
         prediction = np.dot(U.loc[user], V.loc[movie])  # to calculate the
         diff = prediction - rating
-        obj = diff * diff
+        obj += diff * diff
     return obj
 
 # the gradient function to use the rating and u, v to gradient
@@ -227,7 +227,7 @@ def map_function(Y, U, V, learn_rate = 0.001, period_iteration = 1000, loop_time
                 obj_newvalue = create_obj(Y, U, V)
                 loopnum_update.append(index_interation)
                 obj_value.append(obj_newvalue)
-                print("After the %n times iteration, the value of objective function is %0.8f",(index_interation, obj_newvalue))
+                print('After the %s times iteration, the value of objective function is %s'%(index_interation, obj_newvalue))
                 label = check_converge(obj_newvalue, obj_value[currentlabel])
                 if label :
                     break
@@ -235,17 +235,17 @@ def map_function(Y, U, V, learn_rate = 0.001, period_iteration = 1000, loop_time
                     currentlabel += 1
         plt.plot(loopnum_update, obj_value, 'b-.')
         plt.title('Objectives over updates')
-        plt.save('./objective_gradient.png')
+        plt.savefig('./objective_gradient.png')
         return U,V     # update the value
 
 def map_vector(U,V):
     plt.plot(U[0],U[1],'bx')
     plt.title('Users Map')
-    plt.save('./usermap.png')
+    plt.savefig('./usermap.png')
 
     plt.plot(V[0], V[1], 'bx')
     plt.title('Movie Map')
-    plt.save('./moviemap.png')
+    plt.savefig('./moviemap.png')
 
 # we start all three function to
 q = 2
@@ -272,8 +272,8 @@ movie_dis = Y_all['movies'].unique()
 num_movie = movie_dis.shape[0]
 
 q = 2
-U = pd.DataFrame(np.random.normal(size=(n_users, q))*0.001, index=indexes_unique_users)
-V = pd.DataFrame(np.random.normal(size=(n_movies, q))*0.001, index=indexes_unique_movies)
+U = pd.DataFrame(np.random.normal(size=(n_users, q))*0.001, index=num_user)
+V = pd.DataFrame(np.random.normal(size=(n_movies, q))*0.001, index=num_movie)
 
 U, V = map_function(Y_all, U, V)
 
