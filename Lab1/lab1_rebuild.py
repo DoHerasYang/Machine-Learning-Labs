@@ -96,9 +96,7 @@ plt.show()
 # Identify the specific range of the data
 # use the film_deaths['Body_Count'] > 200 to set the index to classify the data and return value is bool Panda Series
 #
-print(film_deaths[film_deaths['Body_Count'] > 200].sort_values('Body_Count', ascending=False))
-# redefine the variable
-
+print(film_deaths[film_deaths['Body_Count'] > 200].sort_values('Body_Count', ascending=False))# redefine the variable
 # re-plot the graph by histograming the data
 # The function variable.hist() is to show the frequency of row values
 
@@ -118,9 +116,17 @@ plt.savefig('./logarithmic.png')
 plt.show()
 
 # Next, we need the python to calculate approximate probabilities of deaths of film which
-# from the movie body count website has over 40 deaths
-deaths = (film_deaths.Body_Count > 40).sum()  # sum() to return the sum of Dataframe
-total_films = film_deaths.Body_Count.count()  # only the Series can return a number
+# from the movie body count website has over 40 deaths.
+# The function of sum() is to calculate the number of bool Series and return the number of Bool value which is True
+# The reason for the why calculate the number of row:
+#       For the Boolean value, True is one as integer value and False is zero for integer value.
+#       The result is add the times of True
+deaths = (film_deaths.Body_Count > 40).sum()  # sum() to return the sum of DataFrame
+# we can change the previous code to:
+# deaths = (film_deaths['Body_Count'] > 40).sum()
+
+total_films = film_deaths.Body_Count.count()
+# only the Series can return a number and count() is to count all the number of value
 prob_death = float(deaths)/float(total_films)
 print("Probability of deaths being greather than 40 is:", prob_death)
 
