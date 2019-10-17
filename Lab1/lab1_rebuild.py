@@ -2,12 +2,16 @@ import numpy as np
 import pandas as pd
 import matplotlib.pylab as plt
 
-film_deaths = pd.read_csv('./film-death-counts-Python.csv')  # Get the data from the csv file
+# Get the data from the csv file which have been downloaded from the
+film_deaths = pd.read_csv('./film-death-counts-Python.csv')
+# The return value is all the data from the file and the type of film_deaths is <class 'pandas.core.frame.DataFrame'>
+
 
 # Summarize the data
 film_deaths.describe()
 
 # Display the data to screen
+# Use the  dataframe['row_name'] to select the all the row
 print(film_deaths['Year'])
 print(film_deaths['Body_Count'])
 
