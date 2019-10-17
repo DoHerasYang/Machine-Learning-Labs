@@ -11,7 +11,7 @@ film_deaths = pd.read_csv('./film-death-counts-Python.csv')
 film_deaths.describe()
 
 # Display the data to screen
-# Use the  dataframe['row_name'] to select the all the row
+# Use the  DataFrame['row_name'] to select the all the row
 print(film_deaths['Year'])
 print(film_deaths['Body_Count'])
 
@@ -94,10 +94,14 @@ plt.show()
 # (``'green'``) or hex strings (``'#008000'``).
 
 # Identify the specific range of the data
-# use the film_deaths['Body_Count'] > 200 to set the index to classify the data
-print(film_deaths[film_deaths['Body_Count'] > 200].sort_values('Body_Count', ascending=False)) # redefine the variable
+# use the film_deaths['Body_Count'] > 200 to set the index to classify the data and return value is bool Panda Series
+#
+print(film_deaths[film_deaths['Body_Count'] > 200].sort_values('Body_Count', ascending=False))
+# redefine the variable
 
 # re-plot the graph by histograming the data
+# The function variable.hist() is to show the frequency of row values
+
 film_deaths['Body_Count'].hist(bins=20)
 plt.title('Histogram of Film Kill count')
 plt.savefig('./histogram.png')
