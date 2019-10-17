@@ -24,22 +24,32 @@ YourStudentID = 746
 nUsersInExample = 10
 
 ratings = pd.read_csv("./ml-latest-small/ratings.csv")
-
 # userId,movieId,rating and tags in rating.csv
 indexs_unique_users = ratings['userId'].unique()  # get the unique identification ID
-n_users = indexs_unique_users.shape[0]   # show the number of column of file
+n_users = indexs_unique_users.shape[0]   # get the number of column of file
 
-np.random.seed(YourStudentID)  # To make the random number can be predicted and same
+np.random.seed(YourStudentID)  # To make the random number can be predicted and get the same result
+# np.random.permutation() is to generate a random sequence of users for movie
 index_users = np.random.permutation(n_users)
 # Based on the YourStudentID to disturb the DataArrange and even though you run this program in different time you can
 # get the same answer as before.
 my_batch_users = index_users[0:nUsersInExample]  # build the array to store the data, by using the
 
-# list the array of movies that that these users gave watched
+# list the array of movies that these users have watched
 list_movies_each_user = [[] for _ in range(nUsersInExample)]
 list_ratings_each_user = [[] for _ in range(nUsersInExample)]
+# The result of these array is the blank and type of above two variables is <class 'list'>
+'''
+list_movies_each_user:
+    [   [   ]
+        [   ]
+        [   ]
+        .....
+        [   ]
+    ]
+'''
 
-# list the movie just for one
+# initialize to list the movie just for one
 list_movies = ratings['movieId'][ratings['userId'] == my_batch_users[0]].values
 list_movies_each_user[0] = list_movies
 
