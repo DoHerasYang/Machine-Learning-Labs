@@ -14,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Lab2/lab2_rebuild.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="72" column="11" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
+            <state relative-caret-position="4212">
+              <caret line="258" selection-start-line="258" selection-end-line="258" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -38,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Lab1/lab1_rebuild.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="162" lean-forward="true" selection-start-line="162" selection-end-line="162" />
+            <state relative-caret-position="4116">
+              <caret line="198" column="66" selection-start-line="197" selection-start-column="66" selection-end-line="198" selection-end-column="66" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -58,6 +58,11 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>shuffle</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -87,11 +92,6 @@
             <path>
               <item name="Machine-Learning-Labs" type="b2602c69:ProjectViewProjectNode" />
               <item name="Machine-Learning-Labs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Machine-Learning-Labs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Machine-Learning-Labs" type="462c0819:PsiDirectoryNode" />
-              <item name="Lab1" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -229,18 +229,19 @@
       <workItem from="1571257650217" duration="457000" />
       <workItem from="1571258585693" duration="1169000" />
       <workItem from="1571343715779" duration="769000" />
-      <workItem from="1571346602783" duration="2613000" />
+      <workItem from="1571346602783" duration="3235000" />
+      <workItem from="1571409502593" duration="696000" />
+      <workItem from="1571416248022" duration="182000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32730000" />
+    <option name="totallyTimeSpent" value="34230000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17765568" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18131869" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -285,10 +286,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/lab/lib/python3.7/site-packages/pandas/io/parsers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="692" selection-start-line="692" selection-end-line="692" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Lab2/lab2_rebuild.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="72" column="11" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
+        <state relative-caret-position="4212">
+          <caret line="258" selection-start-line="258" selection-end-line="258" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -305,17 +313,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/lab/lib/python3.7/site-packages/pandas/io/parsers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="692" selection-start-line="692" selection-end-line="692" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Lab1/lab1_rebuild.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="162" lean-forward="true" selection-start-line="162" selection-end-line="162" />
+        <state relative-caret-position="4116">
+          <caret line="198" column="66" selection-start-line="197" selection-start-column="66" selection-end-line="198" selection-end-column="66" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
