@@ -11,8 +11,8 @@ Menu:
 
    * [Description](#description)
    * [Configure Python Compiling Environment](#configure-python-compiling-environment)
-    * [How to set the correct Python environment in Anaconda3](#how-to-set-the-correct-python-environment-in-anaconda3)
-    * [How to set the correct Python environment in Pycharm by relying on the Anaconda Environment](#how-to-set-the-correct-python-environment-in-pycharm-by-relying-on-the-anaconda-environment)
+   	* [How to set the correct Python environment in Anaconda3](#how-to-set-the-correct-python-environment-in-anaconda3)
+		* [How to set the correct Python environment in Pycharm by relying on the Anaconda Environment](#how-to-set-the-correct-python-environment-in-pycharm-by-relying-on-the-anaconda-environment)
 
 
 Description
@@ -48,7 +48,7 @@ $conda env list #list all the
 $source activate lab #only for Linux/Mac
 #for windows use: activate lab
 (lab)$... #You can run the program now by typing the command in terminal
-``` 
+```
 ### How to set the correct Python environment in Pycharm by relying on the Anaconda Environment
 1.Open the repository folder by Pycharm, and Click `Edit Configuration`
 ![](./Pictures/inst1.png)
