@@ -10,8 +10,8 @@ Menu:
 =========================
 
    * [Description](#description)
-   * [Configure Python Compiling Environment](#configure-python-compiling-environment)
-   	* [How to set the correct Python environment in Anaconda3](#how-to-set-the-correct-python-environment-in-anaconda3)
+   * [Configure Python Compiling Environment](#configure-python-compiling-environment)<br>
+      	* [How to set the correct Python environment in Anaconda3](#how-to-set-the-correct-python-environment-in-anaconda3)<br>
 		* [How to set the correct Python environment in Pycharm by relying on the Anaconda Environment](#how-to-set-the-correct-python-environment-in-pycharm-by-relying-on-the-anaconda-environment)
 
 
